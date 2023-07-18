@@ -66,11 +66,11 @@ after_initialize do
       end
 
       parsed_payload = JSON.parse(memoized_payload)
-      backwards_compatible_json(parsed_payload, parsed_payload['success'])
+      backwards_compatible_json(parsed_payload)
     else
       result = manager.perform
       json = serialize_data(result, NewPostResultSerializer, root: false)
-      backwards_compatible_json(json, result.success?)
+      backwards_compatible_json(json)
     end
   end
 
